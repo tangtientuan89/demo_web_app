@@ -1,0 +1,138 @@
+
+body {
+	background: linear-gradient(0deg, rgb(0, 0, 0), rgb(80, 80, 80));
+	background-attachment: fixed;
+}
+.container {
+	padding-top: 1rem;
+	button {
+		height: 2.5rem;
+		width: 6rem;
+		margin-bottom: 1rem;
+		margin-left: 1rem;
+		cursor: pointer;
+		border-radius: 5px;
+		border: none;
+		color: white;
+		outline-style: none;
+		line-height: 1rem;
+		word-break: normal;
+		text-align: center;
+	}
+}
+.btn-header {
+	display: flex;
+	justify-content: flex-end;
+}
+button {
+	&:focus {
+		outline-style: none;
+	}
+	&:hover {
+		background-color: #f37748;
+	}
+}
+.btn-changePassword {
+	background: #007bff;
+}
+.btn-edit {
+	background: #007bff;
+}
+.btn-logout {
+	background: #7f858c;
+}
+.btn-delete {
+	background: #7f858c;
+}
+.btn-admin {
+	background: brown;
+}
+.search {
+	text-align: center;
+	padding-top: 3rem;
+	padding-bottom:0;
+	input {
+		height: 2rem;
+		padding: 1rem;
+		border-radius: 5px;
+	}
+	button {
+		color: black;
+	}
+}
+.addNew {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	background: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	cursor: pointer;
+	label {
+		font-size: 2rem;
+		padding-left: 1rem;
+		cursor: pointer;
+	}
+}
+.icon {
+	height: 40px;
+	width: 40px;
+	margin-left: 1rem;
+}
+.data {
+	background: #3c3c3c;
+	height: 55vh;
+	width: auto;
+}
+.dolistTitle {
+	overflow: hidden;
+	cursor: pointer;
+}
+.dolistContent {
+	overflow: hidden;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pagination {
+	margin: 15px auto;
+	display: flex;
+	list-style: none;
+	outline: none;
+	display: flex;
+	justify-content: center;
+  }
+  .pagination > .active > a{
+	background-color: #47ccde ;
+	border-color: #47ccde ;
+	color: #fff;
+  }
+  .pagination > li > a{
+	border: 1px solid #47ccde ;
+	padding: 5px 10px;
+	outline: none;
+	cursor: pointer;
+  }
+  .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+	background-color: #47ccde ;
+	border-color: #47ccde;
+	outline: none ;
+  }
+  .pagination > li > a, .pagination > li > span{
+	color: #47ccde
+  }

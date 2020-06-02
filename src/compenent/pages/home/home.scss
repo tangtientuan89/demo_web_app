@@ -1,0 +1,146 @@
+
+.home-container {
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(80, 80, 80, 0.9) 100%
+    ),
+    url(../home/img/bg-masthead.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+.home__content {
+  height: 95vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  .home__content--text--larger {
+    height: 8rem;
+    font-size: 5rem;
+    font-weight: bold;
+    animation: text1 3s;
+  }
+  .home__content--text--medium {
+    height: 5rem;
+    font-size: 2rem;
+    font-style: italic;
+    text-align: center;
+    animation: text2 2s 1.5s;
+  }
+  .home__content--button {
+    height: 3rem;
+    animation: btn 2s 2.5s;
+  }
+
+  .home__content--btn-register {
+	background-color: #7f858c;
+	&:hover{
+		background-color:#f37748 ;
+	}
+  }
+
+}
+footer {
+  text-align: center;
+  font-weight: 300 !important;
+  font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.pulse {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 40rem;
+}
+circle {
+  fill: #ff5154;
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: 50% 50%;
+  animation: pulse 2.5s cubic-bezier(0.5, 0.5, 0, 1);
+  &:nth-child(2) {
+    fill: #7fc6a4;
+    animation: pulse 2.5s 1.5s cubic-bezier(0.5, 0.5, 0, 1);
+  }
+  &:nth-child(3) {
+    fill: #e5f77d;
+    animation: pulse 2.5s 2.5s cubic-bezier(0.5, 0.5, 0, 1);
+  }
+}
+
+@keyframes pulse {
+  25% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes text1 {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes text2 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes btn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    .text1 {
+      height: 6rem;
+      font-size: 3rem;
+      font-weight: bold;
+      animation: text1 3s;
+    }
+    .text2 {
+      height: 5rem;
+      font-size: 1.5rem;
+      font-style: italic;
+      text-align: center;
+      animation: text2 2s 1.5s;
+    }
+  }
+}

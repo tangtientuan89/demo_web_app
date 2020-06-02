@@ -1,0 +1,81 @@
+@keyframes text3 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.login-container {
+  background: linear-gradient(0deg, rgb(0, 0, 0), rgb(80, 80, 80));
+  background-attachment: fixed;
+  color: white;
+}
+.login-container {
+  height: 100vh;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-login {
+  background: #3e4440;
+  height: auto;
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  border: white;
+  a:hover {
+    text-decoration: none;
+  }
+}
+.form-login__email {
+  display: grid;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  animation: text3 2s;
+}
+.form-login__checkbox {
+  display: flex;
+  padding-left: 1.5rem;
+  animation: text3 2s;
+}
+.form-login__checkbox-label {
+  cursor: pointer;
+}
+.form-login__btn {
+  display: flex;
+}
+.form-login__btn--login {
+  width: 100%;
+  animation: text3 2s;
+}
+.form-login__btn--register {
+  background-color: #7f858c;
+  width: 100%;
+  animation: text3 2s;
+}
+.form-login__email--input {
+  height: 2rem;
+  width: 100%;
+  border-radius: 5px;
+  padding: 1rem;
+}
+.form-login__checkbox-input {
+  height: 1rem;
+  width: 1rem;
+  align-self: center;
+  cursor: pointer;
+}
+label {
+  padding: 5px;
+  margin: 0;
+}
+.form-login__forgot-password {
+  padding: 1.5rem;
+  cursor: pointer;
+  animation: text3 2s;
+}
