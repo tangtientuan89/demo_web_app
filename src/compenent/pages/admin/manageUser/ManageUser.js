@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./manageUser.css";
 import Table from "./table/Table";
 import Search from "./search/Search";
+import Host from "../../../../config/Host"
+// import styled from "styled-components";
+
+// style
+
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -35,7 +39,7 @@ export default class Admin extends Component {
   getData = () => {
     return axios({
       method: "GET",
-      url: "http://localhost:8080/api/admin/?search=" + this.state.textSearch,
+      url: Host+"/api/admin/?search=" + this.state.textSearch,
       headers: {
         Authorization: `Bearer ${document.cookie}`,
         "Content-Type": "application/json",
@@ -57,7 +61,7 @@ export default class Admin extends Component {
     console.log("dddddddddd", data);
     return axios({
       method: "PUT",
-      url: `http://localhost:8080/api/admin/?id=${data._id}&status=${data.status}`,
+      url: Host+`/api/admin/?id=${data._id}&status=${data.status}`,
       headers: {
         Authorization: `Bearer ${document.cookie}`,
         "Content-Type": "application/json",
@@ -72,7 +76,7 @@ export default class Admin extends Component {
     console.log("id ", id);
     return axios({
       method: "DELETE",
-      url: "http://localhost:8080/api/admin/?id=" + id,
+      url: Host+"/api/admin/?id=" + id,
       headers: {
         Authorization: `Bearer ${document.cookie}`,
         "Content-Type": "application/json",
@@ -88,7 +92,7 @@ export default class Admin extends Component {
   }
   render() {
     return (
-      <div class="container">
+      <div>
         <Search
           getTextSearch={(text) => {
             this.getTextSearch(text);

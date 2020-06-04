@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./login.scss";
 import axios from "axios";
+import Host from "../../../../config/Host";
+import cookie from "react-cookies";
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -10,13 +12,13 @@ export default class Login extends Component {
       password: "",
     };
   }
-  setCookie = (data, timeExpries) => {
-    var newDay = new Date();
-    newDay.setTime(timeExpries * 1000 * 60 * 60 * 24 + newDay.getTime());
-    document.cookie = `token=${
-      data.token
-    };expries=${newDay.toUTCString()} ";path=http://localhost:8080/"`;
-  };
+  // setCookie = (data, timeExpries) => {
+  //   var newDay = new Date();
+  //   newDay.setTime(timeExpries * 1000 * 60 * 60 * 24 + newDay.getTime());
+  //   document.cookie = `token=${
+  //     data.token
+  //   };expries=${newDay.toUTCString()} ";path=${Host}"`;
+  // };
   handleUserEmail = (event) => {
     this.setState({ email: event.target.value });
   };
@@ -25,10 +27,12 @@ export default class Login extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
+    const expires = new Date();
+    expires.setDate(Date.now() + 1000 * 60 * 60 * 24 * 14);
 
     axios({
       method: "post",
-      url: "http://localhost:8080/login",
+      url: Host + "/login",
       data: {
         email: this.state.email,
         password: this.state.password,
@@ -39,11 +43,18 @@ export default class Login extends Component {
         return (window.location.href = "/login");
       }
       if (res.data.code == 200) {
-        this.setCookie(res.data, 1);
+        console.log(res);
+        // this.setCookie(res.data, 1);
+        cookie.save("token", res.data.token, {
+          expires,
+        });
+        cookie.save("type", res.data.type, {
+          expires,
+        });
         if (res.data.type == 1) {
           return (window.location.href = "/admin");
         }
-        window.location.href = "/to-do-list";
+        window.location.href = "/";
       }
     });
   };

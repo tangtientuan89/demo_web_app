@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import ReactPaginate from "react-paginate";
 import "./table.css";
+import styled from "styled-components";
+
+const Button = styled.button`
+  height: 2.5rem;
+  width: 8rem;
+  margin-left: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline-style: none;
+`;
+
 export default class Table extends Component {
   constructor(props) {
     super(props);
@@ -40,14 +52,21 @@ export default class Table extends Component {
         this.state.offset + this.state.perPage
       );
       const postData = slice.map((element, index) => (
-        <React.Fragment>
+        <React.Fragment key={index}>
           <tr className="row m-0">
-            <td className="col-4">{element.email}</td>
-            <td className="col-2">{element.verified.toString()}</td>
-            <td className="col-3"> {element.status}</td>
+            <td className="col-4 d-flex justify-content-center align-items-center">
+              {element.email}
+            </td>
+            <td className="col-2 d-flex justify-content-center align-items-center">
+              {element.verified.toString()}
+            </td>
+            <td className="col-3 d-flex justify-content-center align-items-center">
+              {" "}
+              {element.status}
+            </td>
             <td className="col-3">
               <div className="d-flex justify-content-center">
-                <button
+                <Button
                   className="m-2 btn-primary"
                   type="button"
                   onClick={() => {
@@ -58,8 +77,8 @@ export default class Table extends Component {
                   }}
                 >
                   Active
-                </button>
-                <button
+                </Button>
+                <Button
                   className="m-2 btn-warning text-dark"
                   type="button"
                   onClick={() => {
@@ -70,16 +89,16 @@ export default class Table extends Component {
                   }}
                 >
                   Block
-                </button>
-                <button
-                  className=" m-2 btn-danger"
+                </Button>
+                <Button
+                  className="m-2 btn-danger"
                   type="button"
                   onClick={() => {
                     this.deleteData(element._id);
                   }}
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </td>
           </tr>
@@ -108,7 +127,7 @@ export default class Table extends Component {
   componentDidMount() {
     this.receivedData();
   }
-  UNSAFE_componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.reloadTable !== this.state.reloadTable) {
       this.receivedData();
       this.reloadTable();
@@ -117,7 +136,7 @@ export default class Table extends Component {
   render() {
     return (
       <div className="">
-        <table class="table table-sm table-striped table-dark table-bordered table-hover">
+        <table className="table table-sm table-striped table-dark table-bordered table-hover">
           <thead>
             <tr className="row m-0 py-2 text-center h4">
               <th className="col-4">Account</th>
@@ -126,9 +145,12 @@ export default class Table extends Component {
               <th className="col-3">Handle</th>
             </tr>
           </thead>
-          <div style={{ height: "500px", overflowY: "scroll" }}>
-            <tbody>{this.state.postData}</tbody>
-          </div>
+
+          <tbody>
+            <div style={{ height: "300px", overflowY: "scroll" }}>
+              {this.state.postData}
+            </div>
+          </tbody>
         </table>
         <div>
           <ReactPaginate

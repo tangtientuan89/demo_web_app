@@ -24,7 +24,7 @@ class MenuAdmin extends React.Component {
   handleClickBtnManageUser = (e) => {
     // e.preventDefault();
     this.props.manageUserShow();
-  console.log(  this.props.manageUser)
+    console.log(this.props.manageUser);
   };
   render() {
     return (
@@ -63,17 +63,18 @@ class MenuAdmin extends React.Component {
   }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log(dispatch)
   return {
     manageUserShow: () => {
       dispatch({ type: "MANAGEUSER_SHOW" });
-
+    },
+    manageUserHide: () => {
+      dispatch({ type: "MANAGEUSER_HIDE" });
     },
   };
 };
 const mapStateToProps = (state, ownProps) => {
   return {
-    manageUser:state.admin.manageUser
+    manageUser: state.admin.manageUser,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(MenuAdmin);

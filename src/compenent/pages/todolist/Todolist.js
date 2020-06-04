@@ -12,6 +12,7 @@ import Search from "./search/Search";
 import Table from "./table/Table";
 import FormAddNewTodo from "./formAddNewTodo/FormAddNewTodo";
 import FormEditTodo from "./formEditTodo/FormEditTodo";
+import Host from "../../../config/Host";
 
 export default class Todolist extends Component {
   constructor(props) {
@@ -36,13 +37,13 @@ export default class Todolist extends Component {
       });
     }
   };
-  getTextSearch =  (text) => {
+  getTextSearch = (text) => {
     /// get text from Search => state textSearch
 
-   this.setState({ textSearch: text });
+    this.setState({ textSearch: text });
     console.log("text", this.state.textSearch);
   };
- 
+
   //
   handleShowFormAdd = () => {
     if (this.state.showFormAdd)
@@ -66,8 +67,8 @@ export default class Todolist extends Component {
       });
     }
   };
-   //Add
-   addData = (title, content) => {
+  //Add
+  addData = (title, content) => {
     const data = {
       title: title,
       content: content,
@@ -75,7 +76,7 @@ export default class Todolist extends Component {
     console.log(data);
     return axios({
       method: "POST",
-      url: "http://localhost:8080/api/to-do-list/",
+      url: Host + "/api/to-do-list/",
       data: data,
       headers: {
         Authorization: `Bearer ${document.cookie}`,
@@ -92,7 +93,7 @@ export default class Todolist extends Component {
     console.log("id ", id);
     return axios({
       method: "DELETE",
-      url: "http://localhost:8080/api/to-do-list/?id=" + id,
+      url: Host + "/api/to-do-list/?id=" + id,
       headers: {
         Authorization: `Bearer ${document.cookie}`,
         "Content-Type": "application/json",
@@ -116,10 +117,10 @@ export default class Todolist extends Component {
   // Search
   updateEditData = (data) => {
     console.log("dddddddddd", data);
- 
+
     return axios({
       method: "PUT",
-      url: "http://localhost:8080/api/to-do-list/?id=" + data._id,
+      url: Host + "/api/to-do-list/?id=" + data._id,
       data: {
         title: data.title,
         content: data.content,
@@ -138,9 +139,7 @@ export default class Todolist extends Component {
   getData = () => {
     return axios({
       method: "GET",
-      url:
-        "http://localhost:8080/api/to-do-list/?search=" +
-        this.state.textSearch,
+      url: Host + "/api/to-do-list/?search=" + this.state.textSearch,
       headers: {
         Authorization: `Bearer ${document.cookie}`,
         "Content-Type": "application/json",

@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.admin.manageUser)
+  console.log(state.admin)
   return {
     manageUser:state.admin.manageUser
       

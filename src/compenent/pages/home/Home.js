@@ -103,10 +103,9 @@ export default class Home extends Component {
     this.animation();
   };
 
-  componentWillMount() {
-    this.checkCookie();
-  }
+
   componentDidMount() {
+    this.checkCookie();
     this.isAuth();
   }
   render() {

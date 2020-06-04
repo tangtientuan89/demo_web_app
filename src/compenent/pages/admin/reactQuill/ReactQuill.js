@@ -2,6 +2,7 @@ import React from "react";
 import ReactQuill, { Quill } from "react-quill"; // ES6
 import { ImageUpload } from "quill-image-upload";
 import "react-quill/dist/quill.snow.css";
+import Host from "../../../../config/Host"
 // import {withStyles} from "@material-ui/core/styles/index";
 Quill.register("modules/imageUpload", ImageUpload);
 //React JS - Quill editor Image upload plugin. + Imgur image upload API + Code uses "react": "16.3.0", quill-image-upload": "^0.1.3
@@ -15,7 +16,7 @@ class QuillEditorImageUpload extends React.Component {
     };
     this.modules = {
       imageUpload: {
-        url: "http://localhost:8080/upload", // server url. If the url is empty then the base64 returns
+        url: Host+"/upload", // server url. If the url is empty then the base64 returns
         method: "POST", // change query method, default 'POST'
         name: "image", // custom form name
         withCredentials: false, // withCredentials
