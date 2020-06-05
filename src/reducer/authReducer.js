@@ -4,9 +4,9 @@ const authInitialState = {
 export const authReducer = (state = authInitialState, action) => {
     switch (action.type) {
         case "LOGIN":
-            return {isLogin:true}
+            return {...state,isLogin:true}
         case "LOGOUT":
-            return  {isLogin:false}
+            return  {...state,isLogin:false}
         default:
             return state
     }

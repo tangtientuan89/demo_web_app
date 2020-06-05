@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import "./home.scss";
+import { connect } from "react-redux";
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,19 +14,7 @@ export default class Home extends Component {
       btn: "",
     };
   }
-  login = () => {
-    this.setState({ isAuthentication: true });
-  };
-  logout = () => {
-    this.setState({ isAuthentication: false });
-  };
-  checkCookie = () => {
-    let token = document.cookie.split("=")[1];
-    console.log(token);
-    if (token) {
-      this.setState({ isAuthentication: true });
-    }
-  };
+
   animation = () => {
     let text = "WELLCOME";
     let arrText = [];
@@ -65,7 +54,7 @@ export default class Home extends Component {
     }, 2800);
   };
   data = () => {
-    if (this.state.isAuthentication) {
+    if (this.props.isLogin) {
       return (
         <div className="home__content">
           <p className="home__content--text--larger">WELLCOME</p>
@@ -96,19 +85,30 @@ export default class Home extends Component {
     }
   };
 
-  isAuth = () => {
-    if (this.state.isAuthentication) {
+  handleIsAuth = () => {
+    if (this.props.isLogin) {
     } else {
     }
     this.animation();
   };
 
-
   componentDidMount() {
-    this.checkCookie();
-    this.isAuth();
+    this.handleIsAuth();
   }
   render() {
     return <div>{this.data()}</div>;
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  console.log(state.auth.isLogin)
+  return {
+    isLogin: state.auth.isLogin,
+  };
+};
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    dispatch1: () => {},
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
